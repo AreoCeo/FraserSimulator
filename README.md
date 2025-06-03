@@ -46,4 +46,4 @@ Then open the folder and import on Godot
 No usage of files and only BErADeatscheese and AreoCeo are allowed to use and edit the files.
 ## License
 
-The work is copywrited my Areo Co.
+The work is copywrited by Areo Co.
