@@ -3,10 +3,16 @@
 Fraser simulator is a simulator that you cycle through frasers seqta notes
 
 ## to commit (only BErADeatscheese and AreoCeo)
-```git
+If it is the first time then:
+``` bash
+git remote add origin https://github.com/AreoCeo/FraserSimulator.git
+git remote -v
+git fetch origin
+git branch --set-upstream-to=origin/main main
+```
+```bash
 # Navigate to your local Godot project directory
 cd /path/to/your/godot/project
-
 # Check the status of your Git repository
 git status
 
