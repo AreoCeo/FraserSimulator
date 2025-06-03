@@ -10,7 +10,7 @@ git remote -v  # Make sure it is linked
 git fetch origin  # Get remote data
 git branch --set-upstream-to=origin/main main
 ```
-# To commit
+## To commit
 ```bash
 # Navigate to your local Godot project directory
 cd /path/to/your/godot/project
