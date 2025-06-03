@@ -4,17 +4,33 @@ Fraser simulator is a simulator that you cycle through frasers seqta notes
 
 ## to commit (only BErADeatscheese and AreoCeo)
 ```git
+# Navigate to your local Godot project directory
 cd /path/to/your/godot/project
+
+# Check the status of your Git repository
 git status
+
+# Add all updated files
 git add .
+
+# Commit the changes with a message
 git commit -m "Updated Godot project files"
-git push origin https://github.com/AreoCeo/FraserSimulator.git
+
+# Ensure you're on the correct branch
+git branch  # Check current branch
+git checkout main  # Switch to 'main' branch (if needed)
+
+# Pull the latest changes from GitHub before pushing
+git pull origin main
+
+# Push the local changes to the remote repository on GitHub
+git push origin main
 ```
 
 ## To clone the repo
 ``` git
-cd <folder_name>
 git clone https://github.com/AreoCeo/FraserSimulator.git
+cd FraserSimulator
 ```
 Then open the folder and import on Godot
 
