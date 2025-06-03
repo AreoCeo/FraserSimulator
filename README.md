@@ -36,10 +36,11 @@ git push origin main
 
 ## To clone the repo
 ``` bash
+cd <file location preferably downloads or documents or other>
 git clone https://github.com/AreoCeo/FraserSimulator.git
 cd FraserSimulator
 ```
-Then open the folder and import on Godot
+Then open the folder and [import on Godot](https://forum.godotengine.org/t/how-to-import-a-folder-containing-a-godot-project/21185)
 
 ## Contributing
 
