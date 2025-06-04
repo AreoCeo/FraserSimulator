@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="Fraser Sim"
-config/features=PackedStringArray("4.2", "Forward Plus")
+run/main_scene="uid://c32u1q0r7elnh"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
