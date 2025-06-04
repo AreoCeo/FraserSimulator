@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c32u1q0r7elnh"]
+[gd_scene load_steps=24 format=3 uid="uid://c32u1q0r7elnh"]
 
 [ext_resource type="Texture2D" uid="uid://uk4ybh1vqvnv" path="res://image_textures/rock_05_diff_4k.jpg" id="1_7dtx0"]
 [ext_resource type="Texture2D" uid="uid://ensn2c0yw2mt" path="res://image_textures/rock_05_nor_gl_4k.jpg" id="2_rro2w"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bflaj17s63uyy" path="res://assets/full wheel.png" id="6_3x3nl"]
 [ext_resource type="Script" uid="uid://82yi64oeag81" path="res://StaminaWheel.gd" id="6_53ewl"]
 [ext_resource type="Texture2D" uid="uid://43yfx8veuw5y" path="res://assets/empty wheel.png" id="7_u8a3u"]
+[ext_resource type="Texture2D" uid="uid://bfhsupealmqsx" path="res://image_textures/sky.jpg" id="9_u8a3u"]
 
 [sub_resource type="Gradient" id="Gradient_54g3w"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -77,7 +78,7 @@ albedo_texture = ExtResource("1_7dtx0")
 normal_texture = ExtResource("2_rro2w")
 normal_depth = 2.0
 ao_strength = 0.031
-roughness = -0.605
+roughness = -0.064
 uv_scale = 0.849
 detiling_rotation = 0.16
 detiling_shift = 0.716
@@ -102,27 +103,37 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [sub_resource type="SphereMesh" id="SphereMesh_4752g"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_armay"]
+panorama = ExtResource("9_u8a3u")
+
+[sub_resource type="Sky" id="Sky_k08es"]
+sky_material = SubResource("PanoramaSkyMaterial_armay")
+
+[sub_resource type="Environment" id="Environment_3x3nl"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 2.52
+sky = SubResource("Sky_k08es")
+ambient_light_color = Color(1, 0.956773, 0.752081, 1)
+ambient_light_energy = 3.19
+fog_depth_begin = 1.0
+fog_depth_end = 642.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+volumetric_fog_emission = Color(1, 1, 1, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_gi_inject = 0.04
+volumetric_fog_length = 527.49
+volumetric_fog_sky_affect = 0.505
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 data_directory = "res://terrain_data"
 material = SubResource("Terrain3DMaterial_rro2w")
 assets = SubResource("Terrain3DAssets_53ewl")
-cast_shadows = 0
 top_level = true
 metadata/_edit_lock_ = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4848, 15.893, -32.647)
-light_color = Color(1, 0.961272, 0.886515, 1)
-light_energy = 1.5
-light_indirect_energy = 4.202
-light_volumetric_fog_energy = 5.041
-light_angular_distance = 83.0
-light_specular = 16.0
-shadow_enabled = true
-shadow_bias = 0.5
-shadow_blur = 0.0
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34113, 27.7198)
@@ -138,19 +149,33 @@ mesh = SubResource("SphereMesh_4752g")
 [node name="SpringArm3D" type="SpringArm3D" parent="Player"]
 spring_length = 4.0
 
-[node name="ThirdPersonCamera" type="Camera3D" parent="Player/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.99239, 4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StaminaWheel" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 449.0
-offset_top = 278.0
-offset_right = 1349.0
-offset_bottom = 1178.0
+offset_left = 477.0
+offset_top = 242.0
+offset_right = 1377.0
+offset_bottom = 1142.0
 scale = Vector2(0.07, 0.07)
-value = 100.0
+max_value = 0.0
 fill_mode = 5
 texture_under = ExtResource("7_u8a3u")
 texture_progress = ExtResource("6_3x3nl")
 script = ExtResource("6_53ewl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.961751, 0.273926, 0, -0.273926, 0.961751, -142.424, 2.43417, 1.52452)
+light_energy = 1.99
+light_indirect_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 0.0
+shadow_transmittance_bias = -16.0
+shadow_blur = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3x3nl")
